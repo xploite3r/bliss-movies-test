@@ -1,16 +1,17 @@
-# URL Parameter to Iframe
+# IMDb Iframe Embed
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iframe with URL Parameter</title>
+    <title>IMDb Iframe Embed</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
+            background-color: #f4f4f4;
         }
         iframe {
             width: 100%;
@@ -21,20 +22,16 @@
 </head>
 <body>
 
-    <h1>Iframe Display</h1>
-    <div id="iframeContainer"></div>
-
     <script>
-        function getUrlParameter(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
+        const urlParams = new URLSearchParams(window.location.search);
+        const imdbId = urlParams.get('IMDb');
+        const iframeUrl = `https://embeddr.rhw.one/embed#https://multiembed.mov/?video_id=${imdbId}/`;
+
+        if (imdbId) {
+            document.write(`<iframe src="${iframeUrl}" title="IMDb Movie"></iframe>`);
+        } else {
+            document.write('<p>Please provide a valid IMDb ID in the URL parameter.</p>');
         }
-
-        const presetUrl = "https://embeddr.rhw.one/embed#https://multiembed.mov/?video_id=";
-        const urlParam = getUrlParameter('url');
-        const iframeUrl = presetUrl + encodeURIComponent(urlParam);
-
-        document.getElementById('iframeContainer').innerHTML = `<iframe src="${iframeUrl}" title="Iframe Example"></iframe>`;
     </script>
 
 </body>
