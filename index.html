@@ -25,7 +25,7 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const imdb = urlParams.get('imd');
-        const iframeUrl = `https://embeddr.rhw.one/embed#https://multiembed.mov/?video_id=${imdb}/`;
+        const iframeUrl = `https://embeddr.rhw.one/embed#https://multiembed.mov/directstream.php?video_id=${imdb}`;
 
         if (imdbId) {
             document.write(`<iframe src="${iframeUrl}" title="IMDb Movie"></iframe>`);
